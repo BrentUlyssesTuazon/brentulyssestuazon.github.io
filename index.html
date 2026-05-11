@@ -1,16 +1,15 @@
-<h1 style="margin-left: 3rem;">Strategic Systems</h1><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Portfolio</title>
+    <title>Brent Tuazon | Portfolio</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        :root {
+         :root {
             /* Premium Lasallian Corporate Palette */
             --mck-navy: #0a2618;     
             --mck-white: #ffffff;    
@@ -216,7 +215,7 @@
 
         /* --- BOX 2: 1080px --- */
         .box-2 { 
-            height: 1080px; 
+            height: 100vh;
             background-color: #ffffff; 
             color: var(--mck-navy); 
             align-items: center; 
@@ -285,6 +284,154 @@
         .footer-links ul li { margin-bottom: 0.8rem; font-size: 1.1rem; transition: opacity 0.3s; }
         .footer-links ul li:hover { opacity: 0.7; }
         .copyright { text-align: center; opacity: 0.5; margin-top: 2rem; }
+
+/* Center-Aligned Box 3 Styling */
+/* Center-Aligned Box 3 Styling */
+.box-3 {
+    min-height: 100vh; 
+    height: auto;      
+    display: flex;
+    overflow: hidden;  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #f9fbf9;
+    /* Reduced top/bottom padding to fit laptop screens better */
+    padding: 40px 0; 
+}
+
+.experience-window {
+    width: 100%;
+    overflow: visible;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    
+    margin-bottom: 0; /* Removed the 1rem gap */
+    padding: 20px 0 30px 0; /* Cut bottom padding down from 60px to 30px */
+}
+
+.experience-track {
+    display: flex;
+    width: max-content;
+    gap: 3rem;
+    animation: slideLeft 45s linear infinite;
+
+}
+
+/* Ensure title and kicker are centered */
+.box-3 .header-group {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@keyframes slideLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.exp-card::before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #0a5f38;
+    margin-bottom: 2rem;
+}
+
+/* Update the base card transition to be buttery smooth */
+.exp-card {
+    flex: 0 0 400px; /* Narrowed slightly from 450px */
+    min-height: 320px; /* Reduced from 400px - massive space saver! */
+    display: flex;
+    flex-direction: column;
+    background-color: var(--mck-white);
+    padding: 2.5rem; /* Reduced from 3rem */
+    border-radius: 4px;
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-bottom: 4px solid transparent;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); 
+    text-align: left;
+    white-space: normal;
+}
+
+/* Hover Effect: Lifts the box and adds a green bottom border */
+.exp-card:hover {
+    transform: translateY(-15px);
+    border-bottom: 4px solid #0a5f38; /* Corporate green accent */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* Typography styling inside the box */
+.exp-card .year {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: #0a5f38;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.exp-card h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--mck-navy);
+}
+
+.exp-card .org {
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+/* Pause the sliding track on hover for readability */
+.experience-track:hover {
+    animation-play-state: paused;
+}
+
+/* Style the short summary that lives on the card */
+.exp-card .summary {
+    margin-top: auto; 
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* Completely hide the detailed text inside the card */
+.exp-card .detail {
+    display: none; 
+}
+
+/* Style the new dynamic display area below the track */
+.dynamic-description-area {
+    width: 100%;
+    max-width: 800px;
+    
+    /* THE FIX: The -20px acts like a magnet, pulling the box upwards */
+    margin: -20px auto 0 auto; 
+    
+    height: 80px; /* Condensed from 120px to keep the footprint small */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+#display-desc {
+    font-size: 1.1rem; /* Scaled down a tiny bit for laptops */
+    color: #444;
+    line-height: 1.6;
+    transition: opacity 0.2s ease; 
+    margin: 0; /* Removes default paragraph margin to keep it perfectly centered */
+}
+
     </style>
 </head>
 <body>
@@ -391,13 +538,63 @@
         </div>
     </section>
 
-    <section class="box box-3">
-        <div class="reveal-up">
-            <h2>A rigorous approach to strategy</h2>
-            <p>Much like a consulting firm, my process begins with deep research and asking the right questions. I believe that the best solutions sit at the intersection of business viability, technical feasibility, and human desirability.</p>
+<section class="box box-3">
+        <div class="header-group reveal-up">
+            <span class="kicker">Professional Portfolio</span>
+            <h2 style="font-size: 2.2rem; margin-top: 0.2rem; margin-bottom: 0.2rem;">Experience Track</h2>
+            <p style="color: #666; margin-top: 0; font-size: 1rem;">
+                A record of strategic implementation across technology, investment, and high-performance discipline.
+            </p>
         </div>
-        <div class="reveal-up delay-1">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Strategy" style="width: 100%; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+
+        <div class="experience-window reveal-up delay-1">
+            <div class="experience-track">
+                
+                <div class="exp-card">
+                    <span class="year">JUN 2026 — AUG 2026</span>
+                    <h3>AI Product Management</h3>
+                    <p class="org">Shopee Apprentice Program</p>
+                    <p class="summary">Leading AI-native infrastructure projects and operational scaling for the regional product team.</p>
+                    <p class="detail">Spearheaded the deployment of generative AI models for regional product routing. Collaborated with cross-functional engineering teams to scale backend operations, reducing ticket resolution time across Southeast Asian markets.</p>
+                </div>
+                
+                <div class="exp-card">
+                    <span class="year">2026 — PRESENT</span>
+                    <h3>Co-Founder & Lead</h3>
+                    <p class="org">Vantage Technologies</p>
+                    <p class="summary">Developing internal AI tools for ticket routing and IT resource management to scale firm operations.</p>
+                    <p class="detail">Architected the core organizational logic and technical infrastructure. Led the development of proprietary automation systems designed to optimize resource allocation and streamline internal operational bottlenecks.</p>
+                </div>
+
+                <div class="exp-card">
+                    <span class="year">2025 — PRESENT</span>
+                    <h3>Portfolio Manager</h3>
+                    <p class="org">Private Investment Firm</p>
+                    <p class="summary">Managing pooled capital with a focus on quantitative finance and macro-driven investment strategies.</p>
+                    <p class="detail">Structured as a limited partnership, directing pooled capital via advanced credit risk modeling, bond yield analysis, and macro-economic projections to secure consistent risk-adjusted returns for external partners.</p>
+                </div>
+
+                <div class="exp-card">
+                    <span class="year">APR 2026</span>
+                    <h3>Superday Finalist</h3>
+                    <p class="org">UBS Global Research</p>
+                    <p class="summary">Engaged in final-round technical finance rigors and credit risk modeling in Makati City.</p>
+                    <p class="detail">Selected for the final candidate pool, undergoing intensive technical interviews focused on global market dynamics, complex financial modeling, and delivering actionable equity research projections.</p>
+                </div>
+
+                <div class="exp-card">
+                    <span class="year">FOUNDATIONAL</span>
+                    <h3>Competitive Swimmer</h3>
+                    <p class="org">Performance Athletics</p>
+                    <p class="summary">Applying elite-level conditioning and data-driven discipline to professional work ethic.</p>
+                    <p class="detail">Developed a rigorous foundation of discipline and biomechanical efficiency through years of competitive swimming and strength conditioning, directly translating high-performance habits into academic and corporate pursuits.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="dynamic-description-area">
+            <p id="display-desc">Hover over an experience to view detailed achievements.</p>
         </div>
     </section>
 
@@ -462,6 +659,37 @@
                     }
                 });
             }, observerOptions);
+
+            // Dynamic Experience Description Logic
+            const expCards = document.querySelectorAll('.exp-card');
+            const displayDesc = document.getElementById('display-desc');
+            const defaultText = "Hover over an experience to view detailed achievements.";
+
+            expCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    // Find the hidden detailed description text
+                    const detailElement = card.querySelector('.detail');
+                    if (detailElement) {
+                        const descText = detailElement.textContent;
+                        
+                        // Fade out, swap text, fade back in
+                        displayDesc.style.opacity = 0;
+                        setTimeout(() => {
+                            displayDesc.textContent = descText;
+                            displayDesc.style.opacity = 1;
+                        }, 200);
+                    }
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    // Revert to default text
+                    displayDesc.style.opacity = 0;
+                    setTimeout(() => {
+                        displayDesc.textContent = defaultText;
+                        displayDesc.style.opacity = 1;
+                    }, 200);
+                });
+            });
 
             const revealElements = document.querySelectorAll(".reveal-up");
             revealElements.forEach(el => observer.observe(el));
