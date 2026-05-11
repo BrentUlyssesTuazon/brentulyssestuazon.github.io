@@ -9,307 +9,342 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
-         :root {
-            /* Premium Lasallian Corporate Palette */
-            --mck-navy: #0a2618;     
-            --mck-white: #ffffff;    
-            --mck-light: #f0f4f1;    
-            --mck-slate: #1a3c28;    
-            --mck-black: #05110b;    
-            
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Inter', sans-serif;
+
+        html {
+            /* 'mandatory' forces the browser to snap to a section whenever the user stops scrolling */
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+:root {
+    /* Premium Lasallian Corporate Palette */
+    --mck-navy: #0a2618;     
+    --mck-white: #ffffff;    
+    --mck-light: #f0f4f1;    
+    --mck-slate: #1a3c28;    
+    --mck-black: #05110b;    
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+}
 
-        body {
-            font-family: var(--font-body);
-            line-height: 1.6;
-            background-color: var(--mck-navy);
-            overflow-x: hidden; /* Prevents horizontal scroll during animations */
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        h1, h2, h3, h4 {
-            font-family: var(--font-heading);
-            font-weight: 700;
-        }
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    background-color: var(--mck-navy);
+    overflow-x: hidden; /* Prevents horizontal scroll during animations */
+}
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
 
-        /* --- EXECUTIVE ANIMATIONS (CSS) --- */
-        .reveal-up {
-            opacity: 0;
-            transform: translateY(40px);
-            /* Cubic-bezier for a premium, smooth deceleration */
-            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
-                        transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-            will-change: opacity, transform;
-        }
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-        .reveal-up.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+/* --- EXECUTIVE ANIMATIONS --- */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+    /* Cubic-bezier for a premium, smooth deceleration */
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
 
-        /* Staggered delays for clustered items */
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
-        .delay-4 { transition-delay: 0.4s; }
+.reveal-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        /* Navbar */
-        header {
-            background: linear-gradient(to bottom, rgba(5, 17, 11, 0.85) 0%, transparent 100%);
-            padding: 1.5rem 5% 3rem 5%; 
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start; 
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            color: #ffffff; 
-            /* Header load animation */
-            animation: fadeInDown 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
+/* Staggered delays for clustered items */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* --- HEADER / NAVBAR --- */
+header {
+    background: linear-gradient(to bottom, rgba(5, 17, 11, 0.85) 0%, transparent 100%);
+    padding: 1.5rem 5% 3rem 5%; 
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    color: #ffffff; 
+    animation: fadeInDown 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
 
-        .logo { font-family: var(--font-heading); font-size: 1.5rem; margin-top: 0.2rem; }
-        nav ul { list-style: none; display: flex; gap: 2rem; margin-top: 0.5rem;}
-        nav ul li a { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: opacity 0.3s; }
-        nav ul li a:hover { opacity: 0.7; }
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        /* Layout Container for Boxes */
-        .box {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center; 
-            padding: 5%;
-            position: relative;
-            overflow: hidden;
-        }
+.logo { font-family: var(--font-heading); font-size: 1.5rem; margin-top: 0.2rem; }
+nav ul { list-style: none; display: flex; gap: 2rem; margin-top: 0.5rem;}
+nav ul li a { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: opacity 0.3s; }
+nav ul li a:hover { opacity: 0.7; }
 
-        /* --- BOX 1: 1.2x (1296px) - Deep Navy --- */
-        .box-1 {
-            height: 1296px;
-            background-color: var(--mck-navy);
-            color: #ffffff;
-            justify-content: flex-start;
-            padding-top: 150px; 
-            zoom: 90%; 
-        }
+/* Layout Container for Boxes */
+.box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    padding: 5%;
+    position: relative;
+    overflow: hidden;
+    
+    /* THE SNAP LOGIC */
+    scroll-snap-align: start;
+    scroll-snap-stop: always; /* Prevents users from scrolling past a section too fast */
+}
 
-        .video-bg {
-            position: absolute;
-            top: 50%; left: 50%;
-            min-width: 100%; min-height: 100%;
-            width: auto; height: auto;
-            transform: translateX(-50%) translateY(-50%);
-            z-index: 0;
-            object-fit: cover;
-            opacity: 0.2; 
-        }
+/* --- BOX 1: Hero Section --- */
+.box-1 {
+    height: 1296px;
+    background-color: var(--mck-navy);
+    color: #ffffff;
+    justify-content: flex-start;
+    padding-top: 150px; 
+    zoom: 90%; 
+}
 
-        .dotted-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1.5' cy='1.5' r='1.5' fill='rgba(255, 255, 255, 0.12)'/%3E%3C/svg%3E");
-            z-index: 1; 
-            pointer-events: none; 
-        }
+.dotted-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1.5' cy='1.5' r='1.5' fill='rgba(255, 255, 255, 0.12)'/%3E%3C/svg%3E");
+    z-index: 1; 
+    pointer-events: none; 
+}
 
-        .main-layout {
-            position: relative;
-            z-index: 2; 
-            display: grid;
-            grid-template-columns: 1.8fr 1.2fr; 
-            gap: 2rem;
-            width: 100%;
-            max-width: 1500px;
-            margin: 0 auto;
-            height: 100%;
-            padding-bottom: 2rem;
-        }
+/* High-Impact Collision Background */
+.collision-container {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    overflow: hidden;
+    z-index: 0; 
+    background-color: var(--mck-navy);
+}
 
-        .layout-left { display: flex; flex-direction: column; gap: 2rem; height: 100%; }
-        .layout-right { display: flex; flex-direction: column; gap: 2rem; height: 100%; }
+.crash-circle {
+    position: absolute;
+    left: 50%;
+    width: 80vw;
+    height: 80vw;
+    max-width: 1000px;
+    max-height: 1000px;
+    border-radius: 50%;
+    filter: blur(100px); 
+    will-change: transform, opacity;
+}
 
-        .intro-text { margin-bottom: 1rem; }
-        .intro-text h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 1rem; }
-        .intro-text p { font-size: 1.15rem; color: #dcdcdc; max-width: 80%; }
+.top-circle {
+    top: 0;
+    background: radial-gradient(circle, rgba(10, 95, 56, 0.45) 0%, transparent 60%);
+    animation: crashFromTop 3.5s cubic-bezier(0.05, 0.95, 0.1, 1) forwards;
+}
 
-        .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; flex: 1; }
-        .col-split { display: flex; flex-direction: column; gap: 2rem; }
+.bottom-circle {
+    bottom: 0;
+    background: radial-gradient(circle, rgba(26, 60, 40, 0.6) 0%, transparent 60%);
+    animation: crashFromBottom 3.5s cubic-bezier(0.05, 0.95, 0.1, 1) forwards;
+}
 
-        .card {
-            position: relative;
-            background-color: #222;
-            border-radius: 6px; 
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            text-decoration: none; 
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px); /* Adjusted hover state to be more executive */
-            box-shadow: 0 12px 30px rgba(0,0,0,0.5); 
-        }
+@keyframes crashFromTop {
+    0% { transform: translate(-50%, -120%) scale(0.7); opacity: 0; }
+    15% { opacity: 1; }
+    100% { transform: translate(-50%, -35%) scale(1); opacity: 1; }
+}
 
-        .card img {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
-            transition: transform 1.5s ease-out;
-        }
-        
-        .card:hover img { transform: scale(1.03); }
-        
-        .card::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 80%;
-            background: linear-gradient(to top, rgba(0,0,0,0.95), transparent); z-index: 1;
-        }
-        
-        .card-content { position: relative; z-index: 2; color: #fff; }
-        .card-tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: #a8b8c8; margin-bottom: 0.5rem; display: block;}
-        .card-title { font-size: 1.6rem; line-height: 1.2;}
-        .card-large .card-title { font-size: 2.5rem; }
+@keyframes crashFromBottom {
+    0% { transform: translate(-50%, 120%) scale(0.7); opacity: 0; }
+    15% { opacity: 1; }
+    100% { transform: translate(-50%, -15%) scale(1.1); opacity: 1; }
+}
 
-        .tall-card { flex: 1; }
-        .med-card { height: 350px; }
+.main-layout {
+    position: relative;
+    z-index: 2; 
+    display: grid;
+    grid-template-columns: 1.8fr 1.2fr; 
+    gap: 2rem;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    height: 100%;
+    padding-bottom: 2rem;
+}
 
-        .form-box {
-            background-color: var(--mck-slate);
-            padding: 2.5rem;
-            border-radius: 6px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            border-top: 4px solid #0a5f38; 
-        }
-        
-        .form-box h3 { font-size: 1.4rem; margin-bottom: 0.5rem; font-family: var(--font-body); font-weight: 600;}
-        .form-box p { font-size: 0.95rem; color: #b0b0b0; margin-bottom: 1.5rem; line-height: 1.4; }
-        .form-box input { width: 100%; padding: 1rem 1.2rem; margin-bottom: 1rem; border: none; border-radius: 4px; font-family: var(--font-body); font-size: 0.95rem; background-color: #ffffff; color: #333; transition: outline 0.3s ease; }
-        .form-box input:focus { outline: 2px solid #0a5f38; }
-        .form-box button { width: 100%; padding: 1rem; background-color: #127548; color: white; border: none; border-radius: 4px; font-family: var(--font-body); font-weight: 600; font-size: 1rem; cursor: pointer; transition: background 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
-        .form-box button:hover { background-color: #0b4e30; }
+.layout-left { display: flex; flex-direction: column; gap: 2rem; height: 100%; }
+.layout-right { display: flex; flex-direction: column; gap: 2rem; height: 100%; }
 
-        /* --- BOX 2: 1080px --- */
-        .box-2 { 
-            height: 100vh;
-            background-color: #ffffff; 
-            color: var(--mck-navy); 
-            align-items: center; 
-            position: relative; 
-        }
+.intro-text { margin-bottom: 1rem; }
+.intro-text h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 1rem; }
+.intro-text p { font-size: 1.15rem; color: #dcdcdc; max-width: 80%; }
 
-        .yt-background {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 150vw; 
-            height: 84.37vw; 
-            min-height: 150vh;
-            min-width: 266vh; 
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            pointer-events: none; 
-        }
+.cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; flex: 1; }
+.col-split { display: flex; flex-direction: column; gap: 2rem; }
 
-        .light-tint {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.88); 
-            z-index: 1; 
-        }
+/* Case Competition Cards */
+.card {
+    position: relative;
+    background-color: #222;
+    border-radius: 6px; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    text-decoration: none; 
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
 
-        .box-2 .content-wrapper { 
-            max-width: 1100px; 
-            text-align: center; 
-            position: relative;
-            z-index: 2; 
-        }
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5); 
+}
 
-        .kicker { display: block; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; color: #0a5f38; margin-bottom: 1rem; }
-        .box-2 h2 { font-size: 3.5rem; margin-bottom: 2rem; }
-        .box-2 p.lead-text { font-size: 1.25rem; color: #333; max-width: 800px; margin: 0 auto; margin-bottom: 4rem; }
+.card img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
+    transition: transform 1.5s ease-out;
+}
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            text-align: left;
-        }
+.card:hover img { transform: scale(1.03); }
 
-        .info-block h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--mck-navy); }
-        .info-block p { font-size: 1.05rem; color: #555; margin-bottom: 1rem; }
+.card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 80%;
+    background: linear-gradient(to top, rgba(0,0,0,0.95), transparent); z-index: 1;
+}
 
-        /* --- Remaining Boxes --- */
-        .box-3 { height: 864px; background-color: var(--mck-light); color: var(--mck-navy); display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .box-3 h2 { font-size: 2.8rem; margin-bottom: 1.5rem; }
-        .box-3 p { font-size: 1.1rem; color: #555; }
+.card-content { position: relative; z-index: 2; color: #fff; }
+.card-tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: #a8b8c8; margin-bottom: 0.5rem; display: block;}
+.card-title { font-size: 1.6rem; line-height: 1.2;}
+.card-large .card-title { font-size: 2.5rem; }
 
-        .box-4 { height: 864px; background-color: var(--mck-slate); color: var(--mck-white); align-items: center; }
-        .box-4 h2 { font-size: 2.8rem; margin-bottom: 2rem; }
-        .resume-list { list-style: none; max-width: 800px; width: 100%; }
-        .resume-list li { border-bottom: 1px solid rgba(255,255,255,0.2); padding: 1.5rem 0; display: flex; justify-content: space-between; font-size: 1.2rem; }
+.tall-card { flex: 1; }
+.med-card { height: 350px; }
 
-        .box-footer { height: 540px; background-color: var(--mck-black); color: var(--mck-white); justify-content: center; gap: 3rem; }
-        .footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; width: 100%; max-width: 1200px; margin: 0 auto; }
-        .footer-logo { font-family: var(--font-heading); font-size: 2.5rem; }
-        .footer-links h4 { font-family: var(--font-body); text-transform: uppercase; margin-bottom: 1rem; color: #888; }
-        .footer-links ul { list-style: none; }
-        .footer-links ul li { margin-bottom: 0.8rem; font-size: 1.1rem; transition: opacity 0.3s; }
-        .footer-links ul li:hover { opacity: 0.7; }
-        .copyright { text-align: center; opacity: 0.5; margin-top: 2rem; }
+/* Resume Request Form */
+.form-box {
+    background-color: var(--mck-slate);
+    padding: 2.5rem;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border-top: 4px solid #0a5f38; 
+}
 
-/* Center-Aligned Box 3 Styling */
-/* Center-Aligned Box 3 Styling */
+.form-box h3 { font-size: 1.4rem; margin-bottom: 0.5rem; font-family: var(--font-body); font-weight: 600;}
+.form-box p { font-size: 0.95rem; color: #b0b0b0; margin-bottom: 1.5rem; line-height: 1.4; }
+.form-box input { width: 100%; padding: 1rem 1.2rem; margin-bottom: 1rem; border: none; border-radius: 4px; font-family: var(--font-body); font-size: 0.95rem; background-color: #ffffff; color: #333; transition: outline 0.3s ease; }
+.form-box input:focus { outline: 2px solid #0a5f38; }
+.form-box button { width: 100%; padding: 1rem; background-color: #127548; color: white; border: none; border-radius: 4px; font-family: var(--font-body); font-weight: 600; font-size: 1rem; cursor: pointer; transition: background 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
+.form-box button:hover { background-color: #0b4e30; }
+
+/* --- BOX 2: Executive Summary --- */
+.box-2 { 
+    height: 100vh;
+    background-color: #ffffff; 
+    color: var(--mck-navy); 
+    align-items: center; 
+    position: relative; 
+}
+
+.yt-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150vw; 
+    height: 84.37vw; 
+    min-height: 150vh;
+    min-width: 266vh; 
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none; 
+}
+
+.light-tint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.88); 
+    z-index: 1; 
+}
+
+.box-2 .content-wrapper { 
+    max-width: 1100px; 
+    text-align: center; 
+    position: relative;
+    z-index: 2; 
+}
+
+.kicker { display: block; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; color: #0a5f38; margin-bottom: 1rem; }
+.box-2 h2 { font-size: 3.5rem; margin-bottom: 2rem; }
+.box-2 p.lead-text { font-size: 1.25rem; color: #333; max-width: 800px; margin: 0 auto; margin-bottom: 4rem; }
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    text-align: left;
+}
+
+.info-block h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--mck-navy); }
+.info-block p { font-size: 1.05rem; color: #555; margin-bottom: 1rem; }
+
+/* --- BOX 3: Experience Track --- */
 .box-3 {
     min-height: 100vh; 
     height: auto;      
     display: flex;
     overflow: hidden;  
+    max-width: 100vw; 
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     background-color: #f9fbf9;
-    /* Reduced top/bottom padding to fit laptop screens better */
     padding: 40px 0; 
+    box-sizing: border-box; 
+}
+
+.box-3 .header-group {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .experience-window {
     width: 100%;
-    overflow: visible;
+    max-width: 100vw; 
+    overflow: hidden; 
     position: relative;
     mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-    
-    margin-bottom: 0; /* Removed the 1rem gap */
-    padding: 20px 0 30px 0; /* Cut bottom padding down from 60px to 30px */
+    margin-bottom: 0; 
+    padding: 25px 0 40px 0; 
 }
 
 .experience-track {
@@ -317,18 +352,37 @@
     width: max-content;
     gap: 3rem;
     animation: slideLeft 45s linear infinite;
-
 }
 
-/* Ensure title and kicker are centered */
-.box-3 .header-group {
-    max-width: 800px;
-    margin: 0 auto;
+.experience-track:hover {
+    animation-play-state: paused;
 }
 
 @keyframes slideLeft {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
+}
+
+.exp-card {
+    flex: 0 0 min(400px, 85vw); 
+    min-height: 320px; 
+    display: flex;
+    flex-direction: column;
+    background-color: var(--mck-white);
+    padding: 2.5rem; 
+    border-radius: 4px;
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-bottom: 4px solid transparent;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); 
+    text-align: left;
+    white-space: normal;
+}
+
+.exp-card:hover {
+    transform: translateY(-15px);
+    border-bottom: 4px solid #0a5f38; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
 .exp-card::before {
@@ -340,83 +394,17 @@
     margin-bottom: 2rem;
 }
 
-/* Update the base card transition to be buttery smooth */
-.exp-card {
-    flex: 0 0 400px; /* Narrowed slightly from 450px */
-    min-height: 320px; /* Reduced from 400px - massive space saver! */
-    display: flex;
-    flex-direction: column;
-    background-color: var(--mck-white);
-    padding: 2.5rem; /* Reduced from 3rem */
-    border-radius: 4px;
-    z-index: 2;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border-bottom: 4px solid transparent;
-    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); 
-    text-align: left;
-    white-space: normal;
-}
+.exp-card .year { font-size: 0.85rem; letter-spacing: 2px; font-weight: 600; color: #0a5f38; margin-bottom: 1.5rem; display: block; }
+.exp-card h3 { font-family: var(--font-heading); font-size: 2rem; margin-bottom: 0.5rem; color: var(--mck-navy); }
+.exp-card .org { font-family: var(--font-body); font-weight: 500; color: #666; margin-bottom: 1.5rem; text-transform: uppercase; font-size: 0.85rem; }
+.exp-card .summary { margin-top: auto; font-size: 1rem; color: #444; line-height: 1.6; }
+.exp-card .detail { display: none; }
 
-/* Hover Effect: Lifts the box and adds a green bottom border */
-.exp-card:hover {
-    transform: translateY(-15px);
-    border-bottom: 4px solid #0a5f38; /* Corporate green accent */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-
-/* Typography styling inside the box */
-.exp-card .year {
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    font-weight: 600;
-    color: #0a5f38;
-    margin-bottom: 1.5rem;
-    display: block;
-}
-
-.exp-card h3 {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: var(--mck-navy);
-}
-
-.exp-card .org {
-    font-family: var(--font-body);
-    font-weight: 500;
-    color: #666;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-}
-
-/* Pause the sliding track on hover for readability */
-.experience-track:hover {
-    animation-play-state: paused;
-}
-
-/* Style the short summary that lives on the card */
-.exp-card .summary {
-    margin-top: auto; 
-    font-size: 1rem;
-    color: #444;
-    line-height: 1.6;
-}
-
-/* Completely hide the detailed text inside the card */
-.exp-card .detail {
-    display: none; 
-}
-
-/* Style the new dynamic display area below the track */
 .dynamic-description-area {
     width: 100%;
     max-width: 800px;
-    
-    /* THE FIX: The -20px acts like a magnet, pulling the box upwards */
     margin: -20px auto 0 auto; 
-    
-    height: 80px; /* Condensed from 120px to keep the footprint small */
+    height: 80px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -424,14 +412,154 @@
     padding: 0 1rem;
 }
 
-#display-desc {
-    font-size: 1.1rem; /* Scaled down a tiny bit for laptops */
-    color: #444;
-    line-height: 1.6;
-    transition: opacity 0.2s ease; 
-    margin: 0; /* Removes default paragraph margin to keep it perfectly centered */
+#display-desc { font-size: 1.1rem; color: #444; line-height: 1.6; transition: opacity 0.2s ease; margin: 0; }
+
+/* --- BOX 4: Technical Arsenal --- */
+.box-4 { height: 864px; background-color: var(--mck-slate); color: var(--mck-white); align-items: center; }
+.box-4 h2 { font-size: 2.8rem; margin-bottom: 2rem; }
+
+.box-4 .content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: left;
 }
 
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    width: 100%;
+}
+
+.tool-category {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-top: 3px solid #0a5f38; 
+    padding: 2rem;
+    border-radius: 4px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.tool-category:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.tool-category h4 {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #a8b8c8;
+    margin-bottom: 1.5rem;
+}
+
+.tool-list { list-style: none; padding: 0; margin: 0; }
+.tool-list li {
+    font-size: 1.1rem;
+    color: var(--mck-white);
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.tool-list li:last-child { border-bottom: none; }
+.tool-list li::before { content: "•"; color: #0a5f38; font-size: 1.5rem; margin-right: 12px; line-height: 0; }
+
+/* --- FOOTER --- */
+.box-footer { height: 540px; background-color: var(--mck-black); color: var(--mck-white); justify-content: center; gap: 3rem; }
+.footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; width: 100%; max-width: 1200px; margin: 0 auto; }
+.footer-logo { font-family: var(--font-heading); font-size: 2.5rem; }
+.footer-links h4 { font-family: var(--font-body); text-transform: uppercase; margin-bottom: 1rem; color: #888; }
+.footer-links ul { list-style: none; }
+.footer-links ul li { margin-bottom: 0.8rem; font-size: 1.1rem; transition: opacity 0.3s; }
+.footer-links ul li:hover { opacity: 0.7; }
+.copyright { text-align: center; opacity: 0.5; margin-top: 2rem; }
+
+/* --- BOX 3: Ambient Glowing Rings (iPhone X Style) --- */
+.ring-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0; 
+    pointer-events: none; /* Ensures the rings don't block your card hover effects */
+}
+
+.glowing-ring {
+    position: absolute;
+    top: 50%;
+    width: 70vw;
+    height: 70vw;
+    max-width: 900px;
+    max-height: 900px;
+    border-radius: 50%;
+    
+    /* The hollow outline trick: No background color, just a thick transparent green border */
+    background-color: transparent;
+    border: 25px solid rgba(10, 95, 56, 0.15); 
+    
+    /* The Glow: Casts a shadow both outward and inward to create volumetric light */
+    box-shadow: 
+        0 0 120px rgba(10, 95, 56, 0.2), 
+        inset 0 0 120px rgba(10, 95, 56, 0.2);
+        
+    /* Softens the hard border into a fuzzy aura */
+    filter: blur(25px); 
+    opacity: 0; /* Starts invisible */
+    will-change: transform, opacity;
+}
+
+/* Base State: Hidden and off-screen */
+.ring-left {
+    left: 0;
+    transform: translate(-100%, -50%) scale(0.8) skewX(-10deg);
+    opacity: 0; 
+}
+
+.ring-right {
+    right: 0;
+    transform: translate(100%, -50%) scale(0.8) skewX(10deg);
+    opacity: 0;
+}
+
+/* Triggered State: This runs ONLY when the JS detects the user has scrolled to it */
+.ring-container.is-visible .ring-left {
+    animation: ringFloatInLeft 3.5s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+.ring-container.is-visible .ring-right {
+    animation: ringFloatInRight 3.5s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+    animation-delay: 0.2s; 
+}
+
+/* The Animations */
+@keyframes ringFloatInLeft {
+    to {
+        /* Settles halfway off the left edge, framing the content */
+        transform: translate(-45%, -50%) scale(1) skewX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes ringFloatInRight {
+    to {
+        /* Settles halfway off the right edge */
+        transform: translate(45%, -50%) scale(1) skewX(0);
+        opacity: 1;
+    }
+}
+
+/* Critical Fix: Ensure your text and track stay above the new background */
+.box-3 .header-group, 
+.box-3 .experience-window, 
+.box-3 .dynamic-description-area {
+    position: relative;
+    z-index: 2;
+}
     </style>
 </head>
 <body>
@@ -448,16 +576,17 @@
     </header>
 
     <section class="box box-1">
-        <video class="video-bg" autoplay loop muted playsinline>
-            <source src="videos/hero-background.mp4" type="video/mp4">
-        </video>
+        <div class="collision-container">
+            <div class="crash-circle top-circle"></div>
+            <div class="crash-circle bottom-circle"></div>
+        </div>
         <div class="dotted-grid"></div>
         
         <div class="main-layout">
             <div class="layout-left">
                 <div class="intro-text">
                     <h1 class="reveal-up">Technology, Markets, </h1>
-                    <h1 style="margin-left: 10rem;">and Strategic Systems</h1>
+                    <h1 class="reveal-up" style="margin-left: 10rem;">and Strategic Systems</h1>
                     <p class="reveal-up delay-1">Information Systems undergraduate at De La Salle University, With a Minor on Financial Risk & Analytics. Specilized in building tools/solutions for Investment & Business goals, Equity Research and delivering actionable intelligence for institutions.</p>
                 </div>
                 
@@ -539,9 +668,15 @@
     </section>
 
 <section class="box box-3">
+
+        <div class="ring-container">
+            <div class="glowing-ring ring-left"></div>
+            <div class="glowing-ring ring-right"></div>
+        </div>
+
         <div class="header-group reveal-up">
             <span class="kicker">Professional Portfolio</span>
-            <h2 style="font-size: 2.2rem; margin-top: 0.2rem; margin-bottom: 0.2rem;">Experience Track</h2>
+            <h2 style="font-size: 3.5rem; margin-top: 0.2rem; margin-bottom: 0.2rem;">Experience Track</h2>
             <p style="color: #666; margin-top: 0; font-size: 1rem;">
                 A record of strategic implementation across technology, investment, and high-performance discipline.
             </p>
@@ -600,21 +735,42 @@
 
     <section class="box box-4">
         <div class="content-wrapper reveal-up">
-            <h2>Professional Experience</h2>
-            <ul class="resume-list">
-                <li class="reveal-up delay-1">
-                    <span>Senior Strategist</span>
-                    <span>2022 - Present</span>
-                </li>
-                <li class="reveal-up delay-2">            
-                    <span>Management Consultant</span>
-                    <span>2019 - 2022</span>
-                </li>
-                <li class="reveal-up delay-3">
-                    <span>Data Analyst</span>
-                    <span>2016 - 2019</span>
-                </li>
-            </ul>
+            <h2>Technical Arsenal</h2>
+            <p style="color: #b0b0b0; margin-bottom: 3rem; font-size: 1.1rem; max-width: 600px; text-align: left;">
+                The frameworks and infrastructure used to deploy AI-native products, analyze market data, and scale enterprise operations.
+            </p>
+            
+            <div class="tools-grid">
+                <div class="tool-category reveal-up delay-1">
+                    <h4>AI & Data Architecture</h4>
+                    <ul class="tool-list">
+                        <li>Python</li>
+                        <li>LLM Integrations</li>
+                        <li>Plotly & Matplotlib</li>
+                        <li>SQL / Relational DBs</li>
+                    </ul>
+                </div>
+
+                <div class="tool-category reveal-up delay-2">
+                    <h4>Product Management</h4>
+                    <ul class="tool-list">
+                        <li>Agile / Scrum</li>
+                        <li>Figma (Wireframing)</li>
+                        <li>Jira / Confluence</li>
+                        <li>User Flow Mapping</li>
+                    </ul>
+                </div>
+
+                <div class="tool-category reveal-up delay-3">
+                    <h4>Systems & Strategy</h4>
+                    <ul class="tool-list">
+                        <li>Backend Authentication</li>
+                        <li>Cloud Infrastructure</li>
+                        <li>Credit Risk Modeling</li>
+                        <li>Bloomberg Terminal</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -642,58 +798,91 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const observerOptions = {
-                root: null,
-                rootMargin: "0px",
-                threshold: 0.15 // Triggers when 15% of the element is visible
-            };
+ <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        
+        // --- 1. INTERSECTION OBSERVER (Scroll Animations) ---
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.15 
+        };
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("is-visible");
-                        // Unobserve after animating so it only triggers once
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
-            // Dynamic Experience Description Logic
-            const expCards = document.querySelectorAll('.exp-card');
-            const displayDesc = document.getElementById('display-desc');
-            const defaultText = "Hover over an experience to view detailed achievements.";
+        const revealElements = document.querySelectorAll(".reveal-up");
+        revealElements.forEach(el => observer.observe(el));
 
-            expCards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    // Find the hidden detailed description text
-                    const detailElement = card.querySelector('.detail');
-                    if (detailElement) {
-                        const descText = detailElement.textContent;
-                        
-                        // Fade out, swap text, fade back in
-                        displayDesc.style.opacity = 0;
-                        setTimeout(() => {
-                            displayDesc.textContent = descText;
-                            displayDesc.style.opacity = 1;
-                        }, 200);
-                    }
-                });
+        // --- 2. THE SEAMLESS LOOP CLONER ---
+        const track = document.querySelector('.experience-track');
+        // Get the original cards before we start cloning
+        const originalCards = Array.from(track.children);
+        
+        // Clone each card and append it to the track dynamically
+        originalCards.forEach(card => {
+            const clone = card.cloneNode(true);
+            // Hide clones from screen readers to keep accessibility clean
+            clone.setAttribute('aria-hidden', true); 
+            track.appendChild(clone);
+        });
 
-                card.addEventListener('mouseleave', () => {
-                    // Revert to default text
+        // --- 3. DYNAMIC DESCRIPTION HOVER LOGIC ---
+        // Re-select all cards (now including the newly cloned ones)
+        const allExpCards = document.querySelectorAll('.exp-card');
+        const displayDesc = document.getElementById('display-desc');
+        const defaultText = "Hover over an experience to view detailed achievements.";
+
+        allExpCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const detailElement = card.querySelector('.detail');
+                if (detailElement) {
+                    const descText = detailElement.textContent;
                     displayDesc.style.opacity = 0;
                     setTimeout(() => {
-                        displayDesc.textContent = defaultText;
+                        displayDesc.textContent = descText;
                         displayDesc.style.opacity = 1;
                     }, 200);
-                });
+                }
             });
 
-            const revealElements = document.querySelectorAll(".reveal-up");
-            revealElements.forEach(el => observer.observe(el));
+            card.addEventListener('mouseleave', () => {
+                displayDesc.style.opacity = 0;
+                setTimeout(() => {
+                    displayDesc.textContent = defaultText;
+                    displayDesc.style.opacity = 1;
+                }, 200);
+            });
         });
-    </script>
+    });
+
+    const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.15 
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const revealElements = document.querySelectorAll(".reveal-up");
+        revealElements.forEach(el => observer.observe(el));
+
+        // [ADD THESE TWO LINES] Tell the observer to also watch the ring background
+        const ringContainer = document.querySelector(".ring-container");
+        if (ringContainer) observer.observe(ringContainer); 
+</script>
 </body>
 </html>
