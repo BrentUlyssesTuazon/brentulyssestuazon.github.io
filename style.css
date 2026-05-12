@@ -1,0 +1,675 @@
+
+        html {
+            scroll-snap-type: y proximity;
+            scroll-behavior: smooth;
+        }
+
+:root {
+    /* Premium Lasallian Corporate Palette */
+    --mck-navy: #0a2618;     
+    --mck-white: #ffffff;    
+    --mck-light: #f0f4f1;    
+    --mck-slate: #1a3c28;    
+    --mck-black: #05110b;    
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    background-color: var(--mck-navy);
+    overflow-x: hidden; /* Prevents horizontal scroll during animations */
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- EXECUTIVE ANIMATIONS --- */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+    /* Cubic-bezier for a premium, smooth deceleration */
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* --- HEADER / NAVBAR --- */
+header {
+    background: linear-gradient(to bottom, rgba(5, 17, 11, 0.85) 0%, transparent 100%);
+    padding: 1.5rem 5% 3rem 5%; 
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    color: #ffffff; 
+    animation: fadeInDown 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.logo { font-family: var(--font-heading); font-size: 1.5rem; margin-top: 0.2rem; }
+nav ul { list-style: none; display: flex; gap: 2rem; margin-top: 0.5rem;}
+nav ul li a { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: opacity 0.3s; }
+nav ul li a:hover { opacity: 0.7; }
+
+/* Layout Container for Boxes */
+.box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    padding: 5%;
+    position: relative;
+    overflow: hidden;
+    
+    /* THE SNAP LOGIC */
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+}
+
+/* --- BOX 1: Hero Section --- */
+.box-1 {
+    height: 1296px;
+    background-color: var(--mck-navy);
+    color: #ffffff;
+    justify-content: flex-start;
+    padding-top: 150px; 
+    zoom: 90%; 
+}
+
+.dotted-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1.5' cy='1.5' r='1.5' fill='rgba(255, 255, 255, 0.12)'/%3E%3C/svg%3E");
+    z-index: 1; 
+    pointer-events: none; 
+}
+
+/* High-Impact Collision Background */
+.collision-container {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    overflow: hidden;
+    z-index: 0; 
+    background-color: var(--mck-navy);
+}
+
+.crash-circle {
+    position: absolute;
+    left: 50%;
+    width: 80vw;
+    height: 80vw;
+    max-width: 1000px;
+    max-height: 1000px;
+    border-radius: 50%;
+    filter: blur(100px); 
+    will-change: transform, opacity;
+}
+
+.top-circle {
+    top: 0;
+    background: radial-gradient(circle, rgba(10, 95, 56, 0.45) 0%, transparent 60%);
+    animation: crashFromTop 3.5s cubic-bezier(0.05, 0.95, 0.1, 1) forwards;
+}
+
+.bottom-circle {
+    bottom: 0;
+    background: radial-gradient(circle, rgba(26, 60, 40, 0.6) 0%, transparent 60%);
+    animation: crashFromBottom 3.5s cubic-bezier(0.05, 0.95, 0.1, 1) forwards;
+}
+
+@keyframes crashFromTop {
+    0% { transform: translate(-50%, -120%) scale(0.7); opacity: 0; }
+    15% { opacity: 1; }
+    100% { transform: translate(-50%, -35%) scale(1); opacity: 1; }
+}
+
+@keyframes crashFromBottom {
+    0% { transform: translate(-50%, 120%) scale(0.7); opacity: 0; }
+    15% { opacity: 1; }
+    100% { transform: translate(-50%, -15%) scale(1.1); opacity: 1; }
+}
+
+.main-layout {
+    position: relative;
+    z-index: 2; 
+    display: grid;
+    grid-template-columns: 1.8fr 1.2fr; 
+    gap: 2rem;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    height: 100%;
+    padding-bottom: 2rem;
+}
+
+.layout-left { display: flex; flex-direction: column; gap: 2rem; height: 100%; }
+.layout-right { display: flex; flex-direction: column; gap: 2rem; height: 100%; }
+
+.intro-text { margin-bottom: 1rem; }
+.intro-text h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 1rem; }
+.intro-text p { font-size: 1.15rem; color: #dcdcdc; max-width: 80%; }
+
+.cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; flex: 1; }
+.col-split { display: flex; flex-direction: column; gap: 2rem; }
+
+/* Case Competition Cards */
+.card {
+    position: relative;
+    background-color: #222;
+    border-radius: 6px; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    text-decoration: none; 
+    
+    /* FIXED: Base transition now handles the slow, smooth entrance fade */
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                box-shadow 0.8s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5); 
+    
+    /* FIXED: Overrides the slow entrance with a fast, snappy movement ONLY on hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
+    transition: transform 1.5s ease-out;
+}
+
+.card:hover img { transform: scale(1.03); }
+
+.card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 80%;
+    background: linear-gradient(to top, rgba(0,0,0,0.95), transparent); z-index: 1;
+}
+
+.card-content { position: relative; z-index: 2; color: #fff; }
+.card-tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: #a8b8c8; margin-bottom: 0.5rem; display: block;}
+.card-title { font-size: 1.6rem; line-height: 1.2;}
+.card-large .card-title { font-size: 2.5rem; }
+
+.tall-card { flex: 1; }
+.med-card { height: 350px; }
+
+/* Resume Request Form */
+.form-box {
+    background-color: var(--mck-slate);
+    padding: 2.5rem;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border-top: 4px solid #0a5f38; 
+}
+
+.form-box h3 { font-size: 1.4rem; margin-bottom: 0.5rem; font-family: var(--font-body); font-weight: 600;}
+.form-box p { font-size: 0.95rem; color: #b0b0b0; margin-bottom: 1.5rem; line-height: 1.4; }
+.form-box input { width: 100%; padding: 1rem 1.2rem; margin-bottom: 1rem; border: none; border-radius: 4px; font-family: var(--font-body); font-size: 0.95rem; background-color: #ffffff; color: #333; transition: outline 0.3s ease; }
+.form-box input:focus { outline: 2px solid #0a5f38; }
+.form-box button { width: 100%; padding: 1rem; background-color: #127548; color: white; border: none; border-radius: 4px; font-family: var(--font-body); font-weight: 600; font-size: 1rem; cursor: pointer; transition: background 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
+.form-box button:hover { background-color: #0b4e30; }
+
+/* --- BOX 2: Executive Summary --- */
+.box-2 { 
+    height: 100vh;
+    background-color: #ffffff; 
+    color: var(--mck-navy); 
+    align-items: center; 
+    position: relative; 
+}
+
+.yt-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150vw; 
+    height: 84.37vw; 
+    min-height: 150vh;
+    min-width: 266vh; 
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none; 
+}
+
+.light-tint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.88); 
+    z-index: 1; 
+}
+
+.box-2 .content-wrapper { 
+    max-width: 1100px; 
+    text-align: center; 
+    position: relative;
+    z-index: 2; 
+}
+
+.kicker { display: block; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; color: #0a5f38; margin-bottom: 1rem; }
+.box-2 h2 { font-size: 3.5rem; margin-bottom: 2rem; }
+.box-2 p.lead-text { font-size: 1.25rem; color: #333; max-width: 800px; margin: 0 auto; margin-bottom: 4rem; }
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    text-align: left;
+}
+
+.info-block h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--mck-navy); }
+.info-block p { font-size: 1.05rem; color: #555; margin-bottom: 1rem; }
+
+/* --- BOX 3: Experience Track --- */
+.box-3 {
+    min-height: 100vh; 
+    height: auto;      
+    display: flex;
+    overflow: hidden;  
+    max-width: 100vw; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #f9fbf9;
+    padding: 40px 0; 
+    box-sizing: border-box; 
+}
+
+.box-3 .header-group {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.experience-window {
+    width: 100%;
+    max-width: 100vw; 
+    overflow: hidden; 
+    position: relative;
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    margin-bottom: 0; 
+    padding: 25px 0 40px 0; 
+}
+
+/* --- BOX 3 DRAG STYLES --- */
+.experience-track {
+    display: flex;
+    width: max-content;
+    gap: 3rem;
+    cursor: grab; /* Indicates it can be pulled */
+    user-select: none; /* Prevents text highlighting during drag */
+    /* Remove the CSS animation here, we will handle it in JS for better control */
+    animation: none; 
+}
+
+.experience-track:active {
+    cursor: grabbing;
+}
+
+.experience-track.grabbing .exp-card {
+    pointer-events: none; /* Prevents hover effects/clicks while dragging */
+}
+
+.experience-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes slideLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.exp-card {
+    flex: 0 0 min(400px, 85vw); 
+    min-height: 320px; 
+    display: flex;
+    flex-direction: column;
+    background-color: var(--mck-white);
+    padding: 2.5rem; 
+    border-radius: 4px;
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-bottom: 4px solid transparent;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); 
+    text-align: left;
+    white-space: normal;
+}
+
+.exp-card:hover {
+    transform: translateY(-15px);
+    border-bottom: 4px solid #0a5f38; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.exp-card::before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #0a5f38;
+    margin-bottom: 2rem;
+}
+
+.exp-card .year { font-size: 0.85rem; letter-spacing: 2px; font-weight: 600; color: #0a5f38; margin-bottom: 1.5rem; display: block; }
+.exp-card h3 { font-family: var(--font-heading); font-size: 2rem; margin-bottom: 0.5rem; color: var(--mck-navy); }
+.exp-card .org { font-family: var(--font-body); font-weight: 500; color: #666; margin-bottom: 1.5rem; text-transform: uppercase; font-size: 0.85rem; }
+.exp-card .summary { margin-top: auto; font-size: 1rem; color: #444; line-height: 1.6; }
+.exp-card .detail { display: none; }
+
+.dynamic-description-area {
+    width: 100%;
+    max-width: 800px;
+    margin: -20px auto 0 auto; 
+    height: 80px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+#display-desc { font-size: 1.1rem; color: #444; line-height: 1.6; transition: opacity 0.2s ease; margin: 0; }
+
+/* --- BOX 4: Technical Arsenal --- */
+.box-4 {
+    height: auto;
+    padding: 100px 5%;
+    background-color: var(--mck-navy); /* Deep, solid, authoritative */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.box-4 h2 {
+    font-size: 2.2rem; /* Slightly smaller, more refined */
+    letter-spacing: -1px;
+    margin-bottom: 1rem;
+}
+.box-4 .content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: left;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0; /* Remove gaps for a unified table look */
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tool-category {
+    background-color: transparent; /* Remove the card background */
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: none; /* Override existing top border */
+    padding: 3rem 2rem;
+    border-radius: 0; /* Sharp corners are more corporate */
+}
+
+.tool-category:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.tool-category h4 {
+    color: #ffffff;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 2.5rem;
+    opacity: 0.6; /* De-emphasize headings to focus on content */
+}
+.tool-list { list-style: none; padding: 0; margin: 0; }
+.tool-list li {
+    font-family: 'Courier New', Courier, monospace; /* Or any clean mono font */
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: none;
+    padding: 0.5rem 0;
+}
+
+.tool-list li:last-child { border-bottom: none; }
+.tool-list li::before {
+    content: "—"; /* Replace bullet with a formal dash */
+    color: #0a5f38;
+    margin-right: 15px;
+}
+/* --- FOOTER --- */
+.box-footer { height: 540px; background-color: var(--mck-black); color: var(--mck-white); justify-content: center; gap: 3rem; }
+.footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; width: 100%; max-width: 1200px; margin: 0 auto; }
+.footer-logo { font-family: var(--font-heading); font-size: 2.5rem; }
+.footer-links h4 { font-family: var(--font-body); text-transform: uppercase; margin-bottom: 1rem; color: #888; }
+.footer-links ul { list-style: none; }
+.footer-links ul li { margin-bottom: 0.8rem; font-size: 1.1rem; transition: opacity 0.3s; }
+.footer-links ul li:hover { opacity: 0.7; }
+.copyright { text-align: center; opacity: 0.5; margin-top: 2rem; }
+
+/* --- BOX 3: Ambient Glowing Rings (iPhone X Style) --- */
+.ring-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0; 
+    pointer-events: none; /* Ensures the rings don't block your card hover effects */
+}
+
+.glowing-ring {
+    position: absolute;
+    top: 50%;
+    width: 70vw;
+    height: 70vw;
+    max-width: 900px;
+    max-height: 900px;
+    border-radius: 50%;
+    
+    /* The hollow outline trick: No background color, just a thick transparent green border */
+    background-color: transparent;
+    border: 25px solid rgba(10, 95, 56, 0.15); 
+    
+    /* The Glow: Casts a shadow both outward and inward to create volumetric light */
+    box-shadow: 
+        0 0 120px rgba(10, 95, 56, 0.2), 
+        inset 0 0 120px rgba(10, 95, 56, 0.2);
+        
+    /* Softens the hard border into a fuzzy aura */
+    filter: blur(25px); 
+    opacity: 0; /* Starts invisible */
+    will-change: transform, opacity;
+
+    transition: 
+        border-color 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+        box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+        transform 0.5s ease-in-out,
+        opacity 0.4s ease;
+}
+/* Shopee Brand Color State */
+.ring-shopee {
+    border-color: rgba(238, 77, 45, 0.25) !important; /* Shopee Orange */
+    box-shadow: 
+        0 0 120px rgba(238, 77, 45, 0.2), 
+        inset 0 0 120px rgba(238, 77, 45, 0.2) !important;
+    transform: scale(0.95); /* Subtle 'retreat' effect */
+}
+
+/* Investment Firm Brand Color State */
+.ring-investment {
+    border-color: rgba(10, 37, 120, 0.25) !important; /* #0a2578 */
+    box-shadow: 
+        0 0 120px rgba(10, 37, 120, 0.2), 
+        inset 0 0 120px rgba(10, 37, 120, 0.2) !important;
+    transform: scale(0.95);
+}
+
+/* Base State: Hidden and off-screen */
+.ring-left {
+    left: 0;
+    transform: translate(-100%, -50%) scale(0.8) skewX(-10deg);
+    opacity: 0; 
+}
+
+.ring-right {
+    right: 0;
+    transform: translate(100%, -50%) scale(0.8) skewX(10deg);
+    opacity: 0;
+}
+
+/* Triggered State: This runs ONLY when the JS detects the user has scrolled to it */
+.ring-container.is-visible .ring-left {
+    animation: ringFloatInLeft 3.5s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+.ring-container.is-visible .ring-right {
+    animation: ringFloatInRight 3.5s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+    animation-delay: 0.2s; 
+}
+
+/* The Animations */
+@keyframes ringFloatInLeft {
+    to {
+        /* Settles halfway off the left edge, framing the content */
+        transform: translate(-45%, -50%) scale(1) skewX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes ringFloatInRight {
+    to {
+        /* Settles halfway off the right edge */
+        transform: translate(45%, -50%) scale(1) skewX(0);
+        opacity: 1;
+    }
+}
+
+/* Critical Fix: Ensure your text and track stay above the new background */
+.box-3 .header-group, 
+.box-3 .experience-window, 
+.box-3 .dynamic-description-area {
+    position: relative;
+    z-index: 2;
+}
+
+/* White circle specific styles */
+.white-circle {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 60vw;
+    height: 60vw;
+    max-width: 800px;
+    border-radius: 50%;
+    /* Subtle white glow - lower opacity to prevent text interference */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+    filter: blur(120px);
+    z-index: 1;
+    pointer-events: none;
+    will-change: transform, opacity;
+    
+    /* Animation: Starts after the initial green crash */
+    animation: whiteCircleDescend 5s cubic-bezier(0.25, 1, 0.5, 1) 1s forwards;
+    opacity: 0;
+}
+
+@keyframes whiteCircleDescend {
+    0% {
+        transform: translate(-50%, -100%) scale(0.8);
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    100% {
+        /* Sits behind the "Technology, Markets" header to act as a highlight */
+        transform: translate(-50%, -20%) scale(1.1);
+        opacity: 1;
+    }
+}
+
+.footer-quote {
+    width: 100%;
+    max-width: 1200px;
+    margin: 4rem auto 2rem auto;
+    padding-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.footer-quote p {
+    font-family: var(--font-heading); /* Playfair Display for a prestige feel */
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    opacity: 0.9;
+}
+
+/* Optional: Add a subtle 'signature' line below the quote */
+.footer-quote::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: #0a5f38; /* Lasallian Green accent */
+    margin: 1.5rem auto 0 auto;
+}
+
+/* Enhanced Staggered Delays */
+.delay-1 { transition-delay: 0.1s; } /* Main Heading */
+.delay-2 { transition-delay: 0.2s; } /* Sub-Heading */
+.delay-3 { transition-delay: 0.3s; } /* Intro Paragraph */
+.delay-4 { transition-delay: 0.4s; } /* CFA Card */
+.delay-5 { transition-delay: 0.5s; } /* Meridian Card */
+.delay-6 { transition-delay: 0.6s; } /* West Valley Card */
+.delay-7 { transition-delay: 0.7s; } /* UBS Large Card */
+.delay-8 { transition-delay: 0.8s; } /* Resume Form Box */
+
