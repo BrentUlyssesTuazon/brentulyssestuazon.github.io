@@ -79,8 +79,37 @@ header {
 
 .logo { font-family: var(--font-heading); font-size: 1.5rem; margin-top: 0.2rem; }
 nav ul { list-style: none; display: flex; gap: 2rem; margin-top: 0.5rem;}
-nav ul li a { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: opacity 0.3s; }
-nav ul li a:hover { opacity: 0.7; }
+/* --- HEADER / NAVBAR LINK ANIMATION --- */
+nav ul li a { 
+    position: relative; /* Essential: anchors the underline to the text */
+    font-size: 0.9rem; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    padding-bottom: 5px; /* Creates breathing room between text and line */
+    transition: opacity 0.3s;
+}
+
+/* The starting state of the underline */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff;
+    /* This cubic-bezier gives it that "graceful" acceleration and deceleration */
+    transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* On hover: drop the opacity fade and expand the line */
+nav ul li a:hover { 
+    opacity: 1; /* Overrides the old fade-out effect so it looks crisp */
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
 
 /* Layout Container for Boxes */
 .box {
@@ -367,6 +396,7 @@ nav ul li a:hover { opacity: 0.7; }
 }
 
 .exp-card {
+    position: relative; /* <--- ADD THIS LINE */
     flex: 0 0 min(400px, 85vw); 
     min-height: 320px; 
     display: flex;
@@ -381,6 +411,18 @@ nav ul li a:hover { opacity: 0.7; }
     text-align: left;
     white-space: normal;
 }
+
+.company-logo {
+    position: absolute;
+    top: 2.5rem;   
+    right: 2.5rem; 
+    width: 55px;    /* Max width of the bounding box */
+    height: 55px;   /* Max height of the bounding box */
+    object-fit: contain; /* Scales the image to fit inside the box perfectly */
+    object-position: top right; /* Anchors the logo to the corner so shorter logos don't float */
+    z-index: 5;
+}
+
 
 .exp-card:hover {
     transform: translateY(-15px);
@@ -483,14 +525,84 @@ nav ul li a:hover { opacity: 0.7; }
     margin-right: 15px;
 }
 /* --- FOOTER --- */
-.box-footer { height: 540px; background-color: var(--mck-black); color: var(--mck-white); justify-content: center; gap: 3rem; }
-.footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; width: 100%; max-width: 1200px; margin: 0 auto; }
-.footer-logo { font-family: var(--font-heading); font-size: 2.5rem; }
-.footer-links h4 { font-family: var(--font-body); text-transform: uppercase; margin-bottom: 1rem; color: #888; }
+.box-footer { 
+    height: auto; /* Removes the rigid 540px height that was causing overlaps */
+    padding: 80px 5% 40px 5%; /* Relies on padding for breathing room instead */
+    background-color: var(--mck-black); 
+    color: var(--mck-white); 
+    display: flex;
+    flex-direction: column;
+    gap: 4rem; /* Even spacing between Quote -> Grid -> Copyright */
+}
+
+/* The Quote at the top */
+.footer-quote {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; 
+    text-align: center;
+}
+
+.footer-quote p {
+    font-family: var(--font-heading); 
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    opacity: 0.9;
+}
+
+.footer-quote::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: #0a5f38; 
+    margin: 1.5rem auto 0 auto;
+}
+
+/* The 3-Column Section */
+.footer-top { 
+    display: grid; 
+    grid-template-columns: 2fr 1fr 1fr; /* Gives the long logo name more room so it doesn't wrap awkwardly */
+    gap: 2rem; 
+    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    align-items: start;
+}
+
+.footer-logo { 
+    font-family: var(--font-heading); 
+    font-size: 2.5rem; 
+    line-height: 1.1;
+}
+
+.footer-links h4 { 
+    font-family: var(--font-body); 
+    text-transform: uppercase; 
+    margin-bottom: 1.5rem; 
+    color: #888; 
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
 .footer-links ul { list-style: none; }
-.footer-links ul li { margin-bottom: 0.8rem; font-size: 1.1rem; transition: opacity 0.3s; }
+.footer-links ul li { margin-bottom: 0.8rem; font-size: 1.05rem; transition: opacity 0.3s; }
 .footer-links ul li:hover { opacity: 0.7; }
-.copyright { text-align: center; opacity: 0.5; margin-top: 2rem; }
+
+/* The Bottom Bar */
+.copyright { 
+    text-align: center; 
+    opacity: 0.5; 
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+    padding-top: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
 /* --- BOX 3: Ambient Glowing Rings (iPhone X Style) --- */
 .ring-container {
