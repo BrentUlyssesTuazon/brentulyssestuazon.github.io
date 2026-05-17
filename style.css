@@ -628,6 +628,17 @@ nav ul li a:hover::after {
     text-align: center;
 }
 
+.quote-author {
+    display: block;
+    font-family: var(--font-body); /* Switches back to your clean Inter font */
+    font-size: 0.85rem; 
+    font-style: normal; /* Removes the italics from the quote */
+    text-transform: uppercase; 
+    letter-spacing: 2px; /* Wide tracking for that executive look */
+    color: rgba(255, 255, 255, 0.5); /* Muted so the quote itself remains the focus */
+    margin-top: 1rem; 
+}
+
 .footer-quote p {
     font-family: var(--font-heading); 
     font-size: 1.8rem; 
