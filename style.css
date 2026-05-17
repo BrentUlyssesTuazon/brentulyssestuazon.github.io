@@ -460,18 +460,21 @@ nav ul li a:hover::after {
 #display-desc { font-size: 1.1rem; color: #444; line-height: 1.6; transition: opacity 0.2s ease; margin: 0; }
 
 /* --- BOX 4: Technical Arsenal --- */
+/* --- BOX 4: Premium Capabilities Matrix --- */
 .box-4 {
     height: auto;
-    padding: 100px 5%;
-    background-color: var(--mck-navy); /* Deep, solid, authoritative */
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 120px 5%; /* Slightly more breathing room */
+    background-color: var(--mck-black); /* Use your darkest color for depth */
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Whisper-thin border */
 }
 
 .box-4 h2 {
-    font-size: 2.2rem; /* Slightly smaller, more refined */
+    font-size: 2.8rem; 
     letter-spacing: -1px;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
 }
+
 .box-4 .content-wrapper {
     max-width: 1200px;
     margin: 0 auto;
@@ -479,129 +482,195 @@ nav ul li a:hover::after {
     text-align: left;
 }
 
+/* Open up the grid: remove vertical borders, rely on space */
 .tools-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0; /* Remove gaps for a unified table look */
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    gap: 4rem; /* Wide gaps instead of borders */
+    margin-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 4rem;
 }
 
 .tool-category {
-    background-color: transparent; /* Remove the card background */
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    border-top: none; /* Override existing top border */
-    padding: 3rem 2rem;
-    border-radius: 0; /* Sharp corners are more corporate */
+    background-color: transparent; 
+    padding: 0; 
+    transition: transform 0.4s ease;
 }
 
+/* Kill the startup bounce! */
 .tool-category:hover {
-    transform: translateY(-5px);
-    background-color: rgba(255, 255, 255, 0.06);
+    transform: none; 
+    background-color: transparent;
 }
 
+/* Institutional Category Headers */
 .tool-category h4 {
+    font-family: var(--font-body);
     color: #ffffff;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    margin-bottom: 2.5rem;
-    opacity: 0.6; /* De-emphasize headings to focus on content */
-}
-.tool-list { list-style: none; padding: 0; margin: 0; }
-.tool-list li {
-    font-family: 'Courier New', Courier, monospace; /* Or any clean mono font */
-    font-size: 0.95rem;
+    font-size: 0.75rem;
+    letter-spacing: 3px; /* Wide tracking is very premium */
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: none;
-    padding: 0.5rem 0;
+    margin-bottom: 2rem;
+    opacity: 0.4; /* Starts muted */
+    transition: opacity 0.4s ease, color 0.4s ease;
 }
 
-.tool-list li:last-child { border-bottom: none; }
+.tool-category:hover h4 {
+    opacity: 1; /* Activates on hover */
+    color: #0a5f38; /* Uses your Lasallian green accent */
+}
+
+/* Refined List Items */
+.tool-list { list-style: none; padding: 0; margin: 0; }
+
+.tool-list li {
+    font-family: var(--font-body); /* Dropping Courier for clean Inter */
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6); /* Muted gray-white */
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Very faint separator */
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+    cursor: default;
+}
+
+.tool-list li:last-child {
+    border-bottom: none;
+}
+
+/* The Micro-Interaction Line */
 .tool-list li::before {
-    content: "—"; /* Replace bullet with a formal dash */
-    color: #0a5f38;
-    margin-right: 15px;
+    content: ""; 
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: #0a5f38;
+    margin-right: 0;
+    transition: width 0.3s ease, margin-right 0.3s ease;
+}
+
+/* Hovering over a specific tool */
+.tool-list li:hover {
+    color: #ffffff; /* Brightens */
+    transform: translateX(8px); /* Subtle slide right */
+}
+
+.tool-list li:hover::before {
+    width: 15px; /* Draws an elegant line before the text */
+    margin-right: 12px;
 }
 /* --- FOOTER --- */
 .box-footer { 
-    height: auto; /* Removes the rigid 540px height that was causing overlaps */
-    padding: 80px 5% 40px 5%; /* Relies on padding for breathing room instead */
+    height: auto; 
+    padding: 80px 5% 40px 5%; 
     background-color: var(--mck-black); 
     color: var(--mck-white); 
     display: flex;
     flex-direction: column;
-    gap: 4rem; /* Even spacing between Quote -> Grid -> Copyright */
+    border-top: none; /* REMOVED to stop the boxed-in feeling */
 }
 
-/* The Quote at the top */
-.footer-quote {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto; 
-    text-align: center;
-}
-
-.footer-quote p {
-    font-family: var(--font-heading); 
-    font-size: 1.8rem;
-    font-style: italic;
-    color: #ffffff;
-    letter-spacing: -0.5px;
-    opacity: 0.9;
-}
-
-.footer-quote::after {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 1px;
-    background: #0a5f38; 
-    margin: 1.5rem auto 0 auto;
-}
-
-/* The 3-Column Section */
 .footer-top { 
     display: grid; 
-    grid-template-columns: 2fr 1fr 1fr; /* Gives the long logo name more room so it doesn't wrap awkwardly */
-    gap: 2rem; 
+    grid-template-columns: 2fr 1fr 1fr; 
+    gap: 4rem; 
     width: 100%; 
     max-width: 1200px; 
-    margin: 0 auto; 
+    margin: 0 auto 1rem auto; /* Reduced margin to pull the quote up slightly */
     align-items: start;
 }
 
-.footer-logo { 
+.footer-brand h2 { 
     font-family: var(--font-heading); 
-    font-size: 2.5rem; 
+    font-size: 2rem; 
     line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.brand-subtext {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .footer-links h4 { 
     font-family: var(--font-body); 
     text-transform: uppercase; 
     margin-bottom: 1.5rem; 
-    color: #888; 
-    font-size: 0.85rem;
-    letter-spacing: 1px;
+    color: #ffffff; 
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    opacity: 0.5;
 }
 
-.footer-links ul { list-style: none; }
-.footer-links ul li { margin-bottom: 0.8rem; font-size: 1.05rem; transition: opacity 0.3s; }
-.footer-links ul li:hover { opacity: 0.7; }
+.footer-links ul { list-style: none; padding: 0; margin: 0;}
+.footer-links ul li { margin-bottom: 1rem; }
+.footer-links ul li a {
+    font-size: 0.95rem; 
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease;
+}
 
-/* The Bottom Bar */
-.copyright { 
-    text-align: center; 
-    opacity: 0.5; 
-    font-size: 0.9rem;
-    margin-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+.footer-links ul li a:hover { 
+    color: #ffffff; 
+}
+
+/* --- The Premium Footer Quote --- */
+.footer-quote {
+    width: 100%;
+    max-width: 800px; 
+    /* Reduced margins: 2rem top, 3rem bottom */
+    margin: 2rem auto 3rem auto; 
+    text-align: center;
+}
+
+.footer-quote p {
+    font-family: var(--font-heading); 
+    font-size: 1.8rem; 
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9); /* Slightly brighter for better contrast */
+    letter-spacing: 0.5px;
+}
+
+/* The elegant separator line underneath the quote */
+.footer-quote::after {
+    content: "";
+    display: block;
+    width: 50px; /* Slightly wider */
+    height: 2px; /* Slightly thicker so it feels deliberate */
+    background: #0a5f38; 
+    margin: 1.5rem auto 0 auto;
+}
+
+/* --- The Bottom Bar --- */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* The only full-width line needed */
     padding-top: 2rem;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.copyright, .footer-legal a { 
+    opacity: 0.4; 
+    font-size: 0.85rem;
+    color: #ffffff;
+    transition: opacity 0.3s ease;
+}
+
+.footer-legal a:hover {
+    opacity: 1;
+}
+
+.box-4 {
+    background-color: var(--mck-navy); 
 }
 
 /* --- BOX 3: Ambient Glowing Rings (iPhone X Style) --- */

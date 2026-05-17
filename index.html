@@ -13,14 +13,14 @@
 
     <header>
         <div class="logo">Brent Ulysses D. Tuazon</div>
-        <nav>
-            <ul>
-                <li><a href="#">Executive Summary</a></li>
-                <li><a href="#">Professional Portfolio</a></li>
-                <li><a href="#">Technical Skills</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+            <nav>
+                <ul>
+                    <li><a href="#summary">Executive Summary</a></li>
+                    <li><a href="#portfolio">Professional Portfolio</a></li>
+                    <li><a href="#technical">Technical Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
     </header>
 
     <section class="box box-1">
@@ -60,7 +60,7 @@
                         <a href="files/west-valley-fresh.pdf" target="_blank" class="card med-card reveal-up delay-4">
                             <img src="images/FOAHK.png" alt="FOAHK">
                             <div class="card-content">
-                                <span class="card-tag">Wealth</span>
+                                <span class="card-tag">Wealth Advisory</span>
                                 <h3 class="card-title">The time is ripe to enter the Hass Avocado scene!</h3>
                             </div>
                         </a>
@@ -72,7 +72,7 @@
                 <a href="files/ubs-challenge.pdf" target="_blank" class="card card-large tall-card reveal-up delay-5">
                     <img src="images/UBS.png" alt="Global Reach">
                     <div class="card-content">
-                        <span class="card-tag">UBS Finance Challenge</span>
+                        <span class="card-tag">Equity Research</span>
                         <h2 class="card-title">The Global Reach of Chinese Medical Technology</h2>
                     </div>
                 </a>
@@ -91,7 +91,7 @@
         </div>
     </section>
 
-    <section class="box box-2">
+    <section id="summary" class="box box-2">
         <video class="data-video-bg" autoplay loop muted playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
             <source src="/videos/preview1.mp4" type="video/mp4">
         </video>
@@ -116,7 +116,7 @@
         </div>
     </section>
 
-<section class="box box-3">
+    <section id="portfolio" class="box box-3">
 
         <div class="ring-container">
             <div class="glowing-ring ring-left"></div>
@@ -185,7 +185,7 @@
         </div>
     </section>
 
-    <section class="box box-4">
+    <section id="technical" class="box box-4">
         <div class="content-wrapper reveal-up">
             <h2>Technical Arsenal</h2>
             <p style="color: #b0b0b0; margin-bottom: 3rem; font-size: 1.1rem; max-width: 600px; text-align: left;">
@@ -226,37 +226,44 @@
         </div>
     </section>
 
-    <footer class="box box-footer">
-        <div class="footer-quote reveal-up">
-            <p>"Your primary fuel for success is your failures."</p>
-        </div>
-
+<footer id="contact" class="box box-footer">
         <div class="footer-top">
-            <div class="footer-logo reveal-up">Brent Ulysses D. Tuazon</div>
+            <div class="footer-brand reveal-up">
+                <h2>Brent Ulysses D. Tuazon</h2>
+                <p class="brand-subtext">Technology, Markets, and Strategic Systems.</p>
+            </div>
             
             <div class="footer-links reveal-up delay-1">
                 <h4>Connect</h4>
                 <ul>
                     <li><a href="#">LinkedIn</a></li>
                     <li><a href="#">GitHub</a></li>
-                    <li><a href="#">Email</a></li>
+                    <li><a href="#">brent.tuazon@example.com</a></li>
                 </ul>
             </div>
             
             <div class="footer-links reveal-up delay-2">
                 <h4>Documents</h4>
                 <ul>
-                    <li><a href="#">Download Resume (PDF)</a></li>
-                    <li><a href="#">View Portfolio Deck</a></li>
+                    <li><a href="files/resume.pdf" target="_blank">Download Resume (PDF)</a></li>
+                    <li><a href="#summary">Executive Summary</a></li>
                 </ul>
             </div>
         </div>
 
-        <div class="copyright reveal-up delay-3">
-            &copy; 2026 Brent Ulysses D. Tuazon. All rights reserved.
+        <div class="footer-quote reveal-up delay-2">
+            <p>"Your primary fuel for success is your failures."</p>
+        </div>
+
+        <div class="footer-bottom reveal-up delay-3">
+            <div class="copyright">
+                &copy; 2026 Brent Ulysses D. Tuazon. All rights reserved.
+            </div>
+            <div class="footer-legal">
+                <a href="#">Based in Pasay City, Metro Manila</a>
+            </div>
         </div>
     </footer>
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     
