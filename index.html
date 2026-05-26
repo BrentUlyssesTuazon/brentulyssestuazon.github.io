@@ -134,10 +134,11 @@
         <div class="experience-window reveal-up delay-1">
             <div class="experience-track">
                 
-                <div class="exp-card">
+                <div class="exp-card" data-company="eble">
+                    <img src="images/Eble.png" alt="EBLE Logo" class="company-logo">
                     <span class="year">2026 — PRESENT</span>
-                    <h3>Co-Founder & Lead</h3>
-                    <p class="org">Vantage Technologies</p>
+                    <h3>Co-Founder</h3>
+                    <p class="org">EBLE</p>
                     <p class="summary">Developing internal AI tools for ticket routing and IT resource management to scale firm operations.</p>
                     <p class="detail">Architected the core organizational logic and technical infrastructure. Led the development of proprietary automation systems designed to optimize resource allocation and streamline internal operational bottlenecks.</p>
                 </div>
@@ -155,24 +156,26 @@
                     <img src="images/shopee.png" alt="Shopee Logo" class="company-logo">
                     
                     <span class="year">JUN 2026 — AUG 2026</span>
-                    <h3>AI Product Management</h3>
+                    <h3>AI Product Management Intern</h3>
                     <p class="org">Shopee Apprentice Program</p>
                     <p class="summary">Leading AI-native infrastructure projects and operational scaling for the regional product team.</p>
                     <p class="detail">Spearheaded the deployment of generative AI models for regional product routing. Collaborated with cross-functional engineering teams to scale backend operations, reducing ticket resolution time across Southeast Asian markets.</p>
                 </div>
 
-                <div class="exp-card">
-                    <span class="year">APR 2026</span>
-                    <h3>Superday Finalist</h3>
-                    <p class="org">UBS Global Research</p>
+                <div class="exp-card" data-company="9824">
+                    <img src="images/9824.png" alt="9824 Logo" class="company-logo">
+                    <span class="year">Feb 2022 — May 2024</span>
+                    <h3>Co-Founder</h3>
+                    <p class="org">9824</p>
                     <p class="summary">Engaged in final-round technical finance rigors and credit risk modeling in Makati City.</p>
                     <p class="detail">Selected for the final candidate pool, undergoing intensive technical interviews focused on global market dynamics, complex financial modeling, and delivering actionable equity research projections.</p>
                 </div>
 
                 <div class="exp-card">
-                    <span class="year">FOUNDATIONAL</span>
-                    <h3>Competitive Swimmer</h3>
-                    <p class="org">Performance Athletics</p>
+                    <img src="images/Personal.png" alt="Personal Logo" class="company-logo">
+                    <span class="year">April 2020 — PRESENT</span>
+                    <h3>Portfolio Manager</h3>
+                    <p class="org">Personal Investments</p>
                     <p class="summary">Applying elite-level conditioning and data-driven discipline to professional work ethic.</p>
                     <p class="detail">Developed a rigorous foundation of discipline and biomechanical efficiency through years of competitive swimming and strength conditioning, directly translating high-performance habits into academic and corporate pursuits.</p>
                 </div>
@@ -252,8 +255,8 @@
         </div>
 
         <div class="footer-quote reveal-up delay-2">
-            <p>"If you're not failing, you're not pushing your limits, and if you're not pushing your limits, you're not maximizing your potential"</p>
-            <span class="quote-author">— Ray Dalio</span>
+            <p>"Success is stumbling from failure to failure with no loss of enthusiasm."</p>
+            <span class="quote-author">— Winston Churchill</span>
         </div>
 
         <div class="footer-bottom reveal-up delay-3">
@@ -378,6 +381,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 rings.forEach(r => r.classList.add('ring-shopee'));
             } else if (company === 'investment') {
                 rings.forEach(r => r.classList.add('ring-investment'));
+            } else if (company === 'eble') {
+                rings.forEach(r => r.classList.add('ring-eble'));
+            } else if (company === '9824') {
+                rings.forEach(r => r.classList.add('ring-9824'));
             }
 
             // Description Logic
@@ -396,7 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!card) return;
 
             isPaused = false; // Resume auto-scroll
-            rings.forEach(r => r.classList.remove('ring-shopee', 'ring-investment'));
+            rings.forEach(r => r.classList.remove('ring-shopee', 'ring-investment', 'ring-eble', 'ring-9824'));
 
             if (displayDesc) {
                 displayDesc.style.opacity = 0;

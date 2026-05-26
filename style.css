@@ -743,6 +743,24 @@ nav ul li a:hover::after {
     transform: scale(0.95);
 }
 
+/* 9824 Brand Color State (Black Variation) */
+.ring-9824 {
+    border-color: rgba(0, 0, 0, 0.25) !important; /* Plain Black border */
+    box-shadow: 
+        0 0 120px rgba(0, 0, 0, 0.2), 
+        inset 0 0 120px rgba(0, 0, 0, 0.2) !important;
+    transform: scale(0.95); /* Subtle 'retreat' effect */
+}
+
+/* EBLE Brand Color State */
+.ring-eble {
+    border-color: rgba(41, 204, 194, 0.25) !important; /* EBLE Teal (29CCC2) */
+    box-shadow: 
+        0 0 120px rgba(41, 204, 194, 0.2), 
+        inset 0 0 120px rgba(41, 204, 194, 0.2) !important;
+    transform: scale(0.95); /* Subtle 'retreat' effect */
+}
+
 /* Base State: Hidden and off-screen */
 .ring-left {
     left: 0;
