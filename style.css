@@ -310,7 +310,7 @@ nav ul li a:hover::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.5); /* Lowered from 0.88 */
+    background-color: rgba(255, 255, 255, 0.88); /* Lowered from 0.88 */
     z-index: 1;
     transform: translateZ(0); /* Forces hardware acceleration */
     pointer-events: none; /* Prevents the tint from blocking clicks */
