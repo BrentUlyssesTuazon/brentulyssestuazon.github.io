@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFA Institute Case | Brent Tuazon</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: var(--mck-navy);">
+
+    <header>
+        <div class="logo"><a href="index.html#">Brent Ulysses D. Tuazon</a></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#summary">Executive Summary</a></li>
+                    <li><a href="index.html#portfolio">Professional Portfolio</a></li>
+                    <li><a href="index.html#technical">Technical Skills</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+    </header>
+
+    <section class="project-detail-box">
+        <div class="project-layout">
+            
+            <div class="project-left reveal-up">
+                <iframe 
+                    src="https://drive.google.com/file/d/1y4FWReheS1ljW_aXvanvsSzEu4cY4wkn/preview" 
+                    title="CFA Case Presentation" 
+                    allow="autoplay"
+                    frameborder="0">
+                </iframe>
+            </div>
+
+            <div class="project-right reveal-up delay-1">
+                <a href="index.html" class="back-btn">&larr; Back to Portfolio</a>
+                
+                <h1>AI Driven Wealth Architecture for the Chen Family</h1>
+                <span class="project-tag">Equity Research • CFA Institute</span>
+
+                <div class="project-section">
+                    <h3>The Challenge</h3>
+                    <p>Briefly describe the premise of the case competition here. What was the core problem you were trying to solve?</p>
+                </div>
+
+                <div class="project-section">
+                    <h3>My Contributions</h3>
+                    <ul>
+                        <li>Led the quantitative analysis and yield curve modeling for the proposed portfolio.</li>
+                        <li>Architected the AI-driven asset allocation framework using Python.</li>
+                        <li>Designed and finalized the presentation deck for the judging panel.</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h3>Retrospective</h3>
+                    <p>Reflecting on the outcome, detail what went well, what went wrong, and what you could have done better. This shows strong self-awareness and growth.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = { threshold: 0.15 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add("is-visible");
+                });
+            }, observerOptions);
+
+            document.querySelectorAll(".reveal-up").forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

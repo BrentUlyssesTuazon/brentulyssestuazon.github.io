@@ -55,21 +55,43 @@ a {
 }
 
 
-
+/* --- HEADER / NAVBAR --- */
 /* --- HEADER / NAVBAR --- */
 header {
-    background: linear-gradient(to bottom, rgba(5, 17, 11, 0.85) 0%, transparent 100%);
+    /* 1. We keep this gradient consistent to prevent background snapping */
+    background: linear-gradient(to bottom, rgba(5, 17, 11, 0.98) 0%, rgba(5, 17, 11, 0.5) 60%, transparent 100%);
     padding: 1.5rem 5% 3rem 5%; 
     display: flex;
     justify-content: space-between;
     align-items: flex-start; 
-    position: absolute;
+    position: absolute; /* Solid part of Box 1 */
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 999;
     color: #ffffff; 
-    animation: fadeInDown 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    
+    /* 2. REMOVED 'forwards' so the browser stops fighting the fade-out */
+    animation: fadeInDown 1s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    /* 3. The smooth transition for slide and fade */
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), 
+                opacity 0.4s ease; 
+}
+
+/* Activated via JS when scrolling past Box 1 */
+header.header-fixed {
+    position: fixed;
+    transform: translateY(-100%); /* Slides up */
+    opacity: 0; /* Fades out */
+    pointer-events: none; /* Prevents ghost clicks over Box 2 */
+}
+
+/* Activated via JS when hovering at the top */
+header.header-fixed.header-reveal {
+    transform: translateY(0); /* Drops down */
+    opacity: 1; /* Fades in */
+    pointer-events: auto; /* Re-enables clicking */
 }
 
 @keyframes fadeInDown {
@@ -761,6 +783,15 @@ nav ul li a:hover::after {
     transform: scale(0.95); /* Subtle 'retreat' effect */
 }
 
+/* YouTube Brand Color State */
+.ring-youtube {
+    border-color: rgba(255, 0, 0, 0.25) !important; /* YouTube Red */
+    box-shadow: 
+        0 0 120px rgba(255, 0, 0, 0.2), 
+        inset 0 0 120px rgba(255, 0, 0, 0.2) !important;
+    transform: scale(0.95); /* Subtle 'retreat' effect */
+}
+
 /* Base State: Hidden and off-screen */
 .ring-left {
     left: 0;
@@ -883,3 +914,130 @@ nav ul li a:hover::after {
 .delay-7 { transition-delay: 0.7s; } /* UBS Large Card */
 .delay-8 { transition-delay: 0.8s; } /* Resume Form Box */
 
+
+
+
+
+
+
+
+/* =========================================
+   PROJECT DETAIL PAGE (SPLIT LAYOUT)
+   ========================================= */
+
+.project-detail-box {
+    padding-top: 140px; /* Accounts for the fixed header */
+    padding-bottom: 60px;
+    min-height: 100vh;
+    background-color: var(--mck-navy);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+.project-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* 60/40 Split */
+    gap: 4rem;
+    max-width: 1500px;
+    margin: 0 auto;
+    width: 90%;
+    height: 80vh; /* Keeps the PDF tall */
+}
+
+/* Left Side: Google Drive Viewer */
+.project-left {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    background-color: #ffffff; /* Fallback */
+}
+
+.project-left iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Right Side: Text & Context */
+.project-right {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto; /* Allows scrolling if text gets too long */
+    padding-right: 1.5rem;
+}
+
+/* Custom Scrollbar for the text section */
+.project-right::-webkit-scrollbar {
+    width: 6px;
+}
+.project-right::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 4px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    color: rgba(255,255,255,0.5);
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.back-btn:hover {
+    color: #ffffff;
+    transform: translateX(-5px); /* Subtle slide left */
+}
+
+.project-right h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.15;
+}
+
+.project-tag {
+    color: #0a5f38; /* Lasallian Green */
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    display: block;
+}
+
+.project-section {
+    margin-bottom: 2.5rem;
+}
+
+.project-section h3 {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 0.5rem;
+}
+
+.project-section p, .project-section ul {
+    color: #dcdcdc;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.project-section ul {
+    padding-left: 1.2rem;
+}
+
+.project-section li {
+    margin-bottom: 0.8rem;
+}

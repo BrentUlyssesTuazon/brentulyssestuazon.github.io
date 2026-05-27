@@ -12,7 +12,7 @@
 <body>
 
     <header>
-        <div class="logo">Brent Ulysses D. Tuazon</div>
+        <div class="logo"><a href="#">Brent Ulysses D. Tuazon</a></div>
             <nav>
                 <ul>
                     <li><a href="#summary">Executive Summary</a></li>
@@ -41,7 +41,7 @@
                 
                 <div class="cards-grid">
                     <div class="col-split">
-                        <a href="files/chen-wealth-deck.pdf" target="_blank" class="card tall-card reveal-up delay-2">
+                        <a href="project-cfa.html" target="_blank" class="card tall-card reveal-up delay-2">
                             <img src="images/CFA.png" alt="CFA Institute">
                             <div class="card-content">
                                 <span class="card-tag">Equity Research</span>
@@ -80,10 +80,15 @@
                 <div class="form-box reveal-up delay-3">
                     <h3>Request my Full Resume</h3>
                     <p>Please provide your professional details. A secure link to my full Resume will be sent to your inbox.</p>
-                    <form action="#" method="POST">
-                        <input type="text" placeholder="Full Name" required>
-                        <input type="email" placeholder="Work Email" required>
-                        <input type="text" placeholder="Company" required>
+                    <form action="https://formsubmit.co/brent.tuazon24@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="New Resume Request from Portfolio!">
+                        <input type="hidden" name="_captcha" value="false"> 
+                        <input type="hidden" name="_next" value="https://brentulyssestuazon.github.io/index.html"> 
+
+                        <input type="text" name="Name" placeholder="Full Name" required>
+                        <input type="email" name="Email" placeholder="Work Email" required>
+                        <input type="text" name="Company" placeholder="Company" required>
+                        
                         <button type="submit">Submit Request &rarr;</button>
                     </form>
                 </div>
@@ -176,6 +181,15 @@
                     <span class="year">April 2020 — PRESENT</span>
                     <h3>Portfolio Manager</h3>
                     <p class="org">Personal Investments</p>
+                    <p class="summary">Applying elite-level conditioning and data-driven discipline to professional work ethic.</p>
+                    <p class="detail">Developed a rigorous foundation of discipline and biomechanical efficiency through years of competitive swimming and strength conditioning, directly translating high-performance habits into academic and corporate pursuits.</p>
+                </div>
+
+                <div class="exp-card" data-company="youtube">
+                    <img src="images/Youtube.png" alt="Youtube Logo" class="company-logo">
+                    <span class="year">April 2020 — PRESENT</span>
+                    <h3>Youtuber</h3>
+                    <p class="org">Explanier Style Video Essays</p>
                     <p class="summary">Applying elite-level conditioning and data-driven discipline to professional work ethic.</p>
                     <p class="detail">Developed a rigorous foundation of discipline and biomechanical efficiency through years of competitive swimming and strength conditioning, directly translating high-performance habits into academic and corporate pursuits.</p>
                 </div>
@@ -385,7 +399,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 rings.forEach(r => r.classList.add('ring-eble'));
             } else if (company === '9824') {
                 rings.forEach(r => r.classList.add('ring-9824'));
+            } else if (company === 'youtube') {
+                rings.forEach(r => r.classList.add('ring-youtube'));
             }
+            
+
 
             // Description Logic
             const detail = card.querySelector('.detail');
@@ -403,7 +421,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!card) return;
 
             isPaused = false; // Resume auto-scroll
-            rings.forEach(r => r.classList.remove('ring-shopee', 'ring-investment', 'ring-eble', 'ring-9824'));
+            rings.forEach(r => r.classList.remove('ring-shopee', 'ring-investment', 'ring-eble', 'ring-9824', 'ring-youtube'));
 
             if (displayDesc) {
                 displayDesc.style.opacity = 0;
@@ -414,6 +432,67 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    // --- SOLID HYBRID HEADER LOGIC ---
+    const header = document.querySelector('header');
+    let isHoveringTop = false;
+
+    // 1. Mouse Tracking for Reveal
+    window.addEventListener('mousemove', (e) => {
+        if (e.clientY < 80) {
+            isHoveringTop = true;
+            if (header.classList.contains('header-fixed')) {
+                header.classList.add('header-reveal');
+            }
+        } else {
+            isHoveringTop = false;
+            if (header.classList.contains('header-fixed')) {
+                header.classList.remove('header-reveal');
+            }
+        }
+    });
+
+    // 2. Scroll Tracking for State Change
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 200) {
+            // Only run this exact swap if it isn't ALREADY fixed
+            if (!header.classList.contains('header-fixed')) {
+                
+                // 1. Kill the animation temporarily
+                header.style.transition = 'none'; 
+                
+                // 2. Make it a hidden dropdown
+                header.classList.add('header-fixed');
+                
+                // 3. Force the browser to instantly calculate the new position (The "Reflow" Trick)
+                void header.offsetWidth; 
+                
+                // 4. Turn animations back on!
+                header.style.transition = ''; 
+                
+                if (isHoveringTop) {
+                    header.classList.add('header-reveal');
+                }
+            }
+        } else {
+            // User scrolled back to the top
+            if (header.classList.contains('header-fixed')) {
+                
+                // 1. Kill the animation temporarily
+                header.style.transition = 'none';
+                
+                // 2. Re-attach it to Box 1
+                header.classList.remove('header-fixed');
+                header.classList.remove('header-reveal');
+                
+                // 3. Force reflow
+                void header.offsetWidth;
+                
+                // 4. Turn animations back on
+                header.style.transition = '';
+            }
+        }
+    }, { passive: true });
 });
 </script>
 </body>
