@@ -758,6 +758,24 @@ nav ul li a:hover::after {
     transform: scale(0.95); /* Subtle 'retreat' effect */
 }
 
+/* ING Hubs Philippines (ING Lion Orange) */
+.ring-ing {
+    border-color: rgba(255, 98, 0, 0.25) !important; 
+    box-shadow: 
+        0 0 120px rgba(255, 98, 0, 0.2), 
+        inset 0 0 120px rgba(255, 98, 0, 0.2) !important;
+    transform: scale(0.95); 
+}
+
+/* RCD Royale Homes (Sunburst Yellow - Primary) */
+.ring-rcd {
+    border-color: rgba(254, 221, 0, 0.25) !important; /* #FEDD00 */
+    box-shadow: 
+        0 0 120px rgba(254, 221, 0, 0.2), 
+        inset 0 0 120px rgba(254, 221, 0, 0.2) !important;
+    transform: scale(0.95);
+}
+
 /* Investment Firm Brand Color State */
 .ring-investment {
     border-color: rgba(10, 37, 120, 0.25) !important; /* #0a2578 */
@@ -1042,4 +1060,59 @@ nav ul li a:hover::after {
 
 .project-section li {
     margin-bottom: 0.8rem;
+}
+
+
+
+/* =========================================
+   MOBILE RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Fix Box 1: Remove hardcoded height and zoom */
+    .box-1 {
+        height: auto;
+        min-height: 100vh;
+        zoom: 100%;
+        padding-top: 120px;
+    }
+    
+    /* Collapse Header and Navigation */
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding-bottom: 1.5rem;
+    }
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    /* Collapse Grid Layouts to 1 Column */
+    .main-layout, 
+    .info-grid, 
+    .tools-grid, 
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Adjust Typography for smaller screens */
+    .intro-text h1, .box-2 h2 {
+        font-size: 2.5rem;
+        margin-left: 0 !important; /* Overrides the 10rem margin in Box 1 */
+    }
+    .card-title {
+        font-size: 1.25rem;
+    }
+    .box-4 h2 {
+        font-size: 2rem;
+    }
+
+    /* Fix Experience Cards width for mobile */
+    .exp-card {
+        flex: 0 0 min(300px, 85vw);
+        padding: 1.5rem;
+    }
 }
